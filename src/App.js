@@ -1,30 +1,15 @@
 import "./App.css";
-import firebase from "firebase/app";
-import "firebase/firestore";
+import { Route } from "react-router-dom";
+import Admin from "./pages/admin";
+import { firestore } from "./firebase";
 
 import { useDocumentData } from "react-firebase-hooks/firestore";
 
-firebase.initializeApp({
-  apiKey: "AIzaSyDeVK4Ry0JmrZ2I2WFTDojYUw95CIeNL04",
-  authDomain: "dahls-tech.firebaseapp.com",
-  databaseURL: "https://dahls-tech.firebaseio.com",
-  projectId: "dahls-tech",
-  storageBucket: "dahls-tech.appspot.com",
-  messagingSenderId: "457693107267",
-  appId: "1:457693107267:web:28ed20bdab468f1b14b0f6",
-  measurementId: "G-BXJZC60K15",
-});
+const fridgeStatusRef = firestore.doc("/fridges/fridge1");
 
-const firestore = firebase.firestore();
-const fridgeStatusRef = firestore.doc("/fridgeStatus/qTpqGIGm2kv7W2VaxjjQ");
-
-function App() {
-  const [fridgeData, loading, error] = useDocumentData(fridgeStatusRef);
-
-  console.log(fridgeData, loading, error);
-
+function Main({ fridgeData, loading }) {
   function getStatus() {
-    if (fridgeData.status === 1) {
+    if (fridgeData.stock > 0) {
       return (
         <div className="dahls">
           <h4 style={{ color: "green" }}>Status: Mye dahls i skap</h4>
@@ -47,9 +32,8 @@ function App() {
       </div>
     );
   }
-
   return (
-    <div className="container">
+    <>
       <div className="header">
         <h1>
           Velkommen til <span style={{ color: "red" }}>dahls</span>.
@@ -76,6 +60,23 @@ function App() {
           (Ankile)
         </p>
       </div>
+    </>
+  );
+}
+
+function App() {
+  const [fridgeData, loading, error] = useDocumentData(fridgeStatusRef);
+
+  console.log(fridgeData, loading, error);
+
+  return (
+    <div className="container">
+      <Route path="/" exact>
+        <Main fridgeData={fridgeData} loading={loading} />
+      </Route>
+      <Route path="/admin">
+        <Admin />
+      </Route>
       <div className="footer">
         Powered by dagsfylla
         <a
