@@ -1,6 +1,8 @@
 import "./App.css";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import Admin from "./pages/admin";
+import { Login } from "./pages/login";
+import { Register } from "./pages/register";
 import { firestore } from "./firebase";
 
 import { useDocumentData } from "react-firebase-hooks/firestore";
@@ -13,6 +15,7 @@ function Main({ fridgeData, loading }) {
       return (
         <div className="dahls">
           <h4 style={{ color: "green" }}>Status: Mye dahls i skap</h4>
+          <p>{fridgeData.stock} dahlser igjen</p>
           <div className="circles">
             <div className="beer"></div>
             <div className="noBeer" style={{ opacity: 0.2 }}></div>
@@ -71,12 +74,20 @@ function App() {
 
   return (
     <div className="container">
-      <Route path="/" exact>
-        <Main fridgeData={fridgeData} loading={loading} />
-      </Route>
-      <Route path="/admin">
-        <Admin />
-      </Route>
+      <div className="content">
+        <Route path="/" exact>
+          <Main fridgeData={fridgeData} loading={loading} />
+        </Route>
+        <Route path="/admin">
+          <Admin />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/register">
+          <Register />
+        </Route>
+      </div>
       <div className="footer">
         Powered by dagsfylla
         <a
@@ -94,6 +105,12 @@ function App() {
         >
           <img src="/dahls.png" alt="Dahls på glass" />
         </a>
+        <Link to="/login" style={{ marginLeft: "1em" }}>
+          Logg inn
+        </Link>
+        <Link to="/admin" style={{ marginLeft: "1em" }}>
+          Adminpanel
+        </Link>
       </div>
     </div>
   );
