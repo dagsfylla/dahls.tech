@@ -28,8 +28,21 @@
 
 }
 
-.circles img {
-  max-height: 200px;
+.beer {
+  margin: 5px;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  background-color: green;
+}
+
+.noBeer {
+  margin: 5px;
+
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  background-color: red;
 }
 
 .footer {

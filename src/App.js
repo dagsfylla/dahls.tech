@@ -13,16 +13,16 @@ function App() {
     status = <div className="dahls">
       <h4 style={{ color: "green" }}>Status: Mye dahls i skap</h4>
       <div className="circles">
-        <img src="/green.png" alt="Lots of dahls" />
-        <img src="/red.png" alt="Empty" style={{ opacity: 0.2 }} />
+        <div className="beer"></div>
+        <div className="noBeer" style={{ opacity: 0.2 }}></div>
       </div>
     </div>
   } else {
     status = <div className="tomt">
       <h4 style={{ color: "red" }}>Helvette det er tomt, kontakt dagsfylla ASAP</h4>
       <div className="circles">
-        <img src="/green.png" alt="Go dahls" style={{ opacity: 0.2 }} />
-        <img src="/red.png" alt="Empty" />
+        <div className="beer" style={{ opacity: 0.2 }}></div>
+        <div className="noBeer"></div>
       </div>
     </div>
   }
