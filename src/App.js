@@ -7,7 +7,7 @@ function getStatus() {
 
 function App() {
 
-  let data = 0;
+  let data = 1;
   let status;
   if (data) {
     status = <div className="dahls">
