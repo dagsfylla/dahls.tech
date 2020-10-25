@@ -3,6 +3,7 @@ import { Route, Link } from "react-router-dom";
 import Admin from "./pages/admin";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
+import { Me } from "./pages/me";
 import { firestore } from "./firebase";
 
 import { useDocumentData } from "react-firebase-hooks/firestore";
@@ -14,7 +15,7 @@ function Main({ fridgeData, loading }) {
     if (fridgeData.stock > 0) {
       return (
         <div className="dahls">
-          <h4 style={{ color: "green" }}>Status: Mye dahls i skap</h4>
+          <h3 style={{ color: "green" }}>Status: Mye dahls i skap</h3>
           <p>{fridgeData.stock} dahlser igjen</p>
           <div className="circles">
             <div className="beer"></div>
@@ -25,9 +26,9 @@ function Main({ fridgeData, loading }) {
     }
     return (
       <div className="tomt">
-        <h4 style={{ color: "red" }}>
+        <h3 style={{ color: "red" }}>
           Helvette det er tomt, kontakt dagsfylla ASAP!
-        </h4>
+        </h3>
         <div className="circles">
           <div className="beer" style={{ opacity: 0.2 }}></div>
           <div className="noBeer"></div>
@@ -87,6 +88,9 @@ function App() {
         <Route path="/register">
           <Register />
         </Route>
+        <Route path="/me">
+          <Me />
+        </Route>
       </div>
       <div className="footer">
         Powered by dagsfylla
@@ -110,6 +114,9 @@ function App() {
         </Link>
         <Link to="/admin" style={{ marginLeft: "1em" }}>
           Adminpanel
+        </Link>
+        <Link to="/me" style={{ marginLeft: "1em" }}>
+          Min side
         </Link>
       </div>
     </div>

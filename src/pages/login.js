@@ -4,9 +4,16 @@ import { auth } from "../firebase";
 import { Link } from "react-router-dom";
 
 export function Login() {
-  function login() {
+  const [loading, setLoading] = useState(false);
+
+  async function login() {
+    setLoading(true);
     const { email, password } = credentials;
-    auth.signInWithEmailAndPassword(email, password);
+    await auth
+      .signInWithEmailAndPassword(email, password)
+      .catch((reason) => alert(reason.message));
+
+    setLoading(false);
   }
 
   function logout() {
@@ -18,6 +25,7 @@ export function Login() {
 
   return (
     <div
+      onKeyPress={(e) => e.key === "Enter" && login()}
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       {!user ? (
@@ -47,10 +55,17 @@ export function Login() {
               })
             }
           />
-          <button onClick={login}>Log in</button>
+          <button onClick={login}>{!loading ? "Logg inn" : "Jobber..."}</button>
         </>
       ) : (
-        <button onClick={logout}>Log out</button>
+        <>
+          <h2>Du har logget inn.</h2>
+          <p>
+            Du kan nå gå til <Link to="/me">min side</Link> eller{" "}
+            <Link to="/admin">adminpanelet</Link>.
+          </p>
+          <button onClick={logout}>Logg ut</button>
+        </>
       )}
       <Link to="/">Home</Link>
     </div>
