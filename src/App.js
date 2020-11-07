@@ -54,13 +54,13 @@ function Main({ fridgeData, loading }) {
         {loading ? (
           <p>Laster kjøleskapsstatus</p>
         ) : (
-          <div className="status">{getStatus()}</div>
-        )}
+            <div className="status">{getStatus()}</div>
+          )}
 
         <LatestNews />
 
         <p>
-          Betaling: Skjer foreløpig over Vipps (se kjøleskap), men et mer
+          Betaling: Skjer foreløpig over Vipps til 41332399, men et mer
           avansert brukersystem er under utvikling!
         </p>
 
