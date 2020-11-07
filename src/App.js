@@ -3,6 +3,7 @@ import { Route, Link } from "react-router-dom";
 import Admin from "./pages/admin";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
+import { LatestNews } from "./pages/latestNews";
 import { Me } from "./pages/me";
 import { firestore } from "./firebase";
 
@@ -53,6 +54,8 @@ function Main({ fridgeData, loading }) {
         ) : (
           <div className="status">{getStatus()}</div>
         )}
+
+        <LatestNews />
 
         <p>
           Betaling: Skjer foreløpig over Vipps (se kjøleskap), men et mer
