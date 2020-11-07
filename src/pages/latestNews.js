@@ -8,6 +8,7 @@ const MessageBox = styled.div`
   padding: 0.5em 1em;
   background: rgba(255, 0, 0, 0.1);
   border-radius: 5px;
+  margin: 1em 0;
 `;
 
 const Col = styled.div`
@@ -45,7 +46,7 @@ export function LatestNews() {
       <MessageBox>
         <Col>
           <Row justify="space-between" border>
-            <span>Siste melding</span>
+            <span>Siste oppdatering</span>
             <span>
               Tid:
               {moment

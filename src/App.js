@@ -17,7 +17,9 @@ function Main({ fridgeData, loading }) {
       return (
         <div className="dahls">
           <h3 style={{ color: "green" }}>Status: Mye dahls i skap</h3>
-          <p>{fridgeData.stock} dahlser igjen</p>
+          <p>
+            {fridgeData.stock} dahls{fridgeData.stock > 1 && "er"} igjen
+          </p>
           <div className="circles">
             <div className="beer"></div>
             <div className="noBeer" style={{ opacity: 0.2 }}></div>
