@@ -93,22 +93,26 @@ function App() {
         </Route>
       </div>
       <div className="footer">
-        Powered by dagsfylla
-        <a
-          href="https://www.dagsfylla.no"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="/dahls.png" alt="Dagsfylla" />
-        </a>
-        <p style={{ paddingLeft: 10 }}>og vi som liker dahls på glass</p>
-        <a
-          href="https://www.ecdahls.no"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="/dahls.png" alt="Dahls på glass" />
-        </a>
+        <div className="footer-section">
+          <p>Powered by dagsfylla</p>
+          <a
+            href="https://www.dagsfylla.no"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/dahls.png" alt="Dagsfylla" />
+          </a>
+        </div>
+        <div className="footer-section">
+          <p>og vi som liker dahls på glass</p>
+          <a
+            href="https://www.ecdahls.no"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/dahls.png" alt="Dahls på glass" />
+          </a>
+        </div>
         <Link to="/login" style={{ marginLeft: "1em" }}>
           Logg inn
         </Link>
